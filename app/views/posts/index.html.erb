@@ -11,8 +11,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Category</th>
+      <th><%= sort_link(@q, :title)%></th>
+      <th><strong>Category</strong><%= sort_link(@q, :category_name)%></th>
       <th>Tags</th>
       <th>Author</th>
       <th>Published</th>
