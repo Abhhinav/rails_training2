@@ -1,0 +1,5 @@
+<ul>
+<% tags.each do |tag| %>
+    <li><%= link_to_if tag.posts.size>0, tag.name, tag_search_path(tag.name) %> (<%= tag.posts.size %>)</li>
+    <% end %>
+</ul>

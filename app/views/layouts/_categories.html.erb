@@ -1,0 +1,7 @@
+<ul>
+<% categories.each do |category| %>
+    <li>
+        <%= link_to_if category.posts.size>0, category.name, category_search_posts_path(category.name) %> (<%= category.posts.size %>)
+    </li> 
+<% end %>
+</ul>

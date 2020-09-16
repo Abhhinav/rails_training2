@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2><%= @post.title %></h2>
+        <span class= "badge badge-info">
+            <%= @post.category.name %>
+        </span>
+    </div>    
+    <div>
+        <%= @post.body %>
+    </div>
+    <%= link_to "back", root_url %>
+</div>

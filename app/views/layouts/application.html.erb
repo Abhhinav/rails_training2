@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  
+    <div class="container">
+      <%= render partial: "layouts/topmenu" %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p> 
+      <div class="row">
+        <div class="col-md-9"> 
+          <%= yield %>
+          <% if @posts %>
+          <%= render "layouts/posts", posts: @posts %> 
+          <% end %>  
+        </div>
+        <div class="col-md-3">
+          <% if @categories %>
+            <h6>CATEGORIES</h6>
+            <%= render "layouts/categories", categories: @categories %>
+          <% end %>
+          <% if @tags %>
+            <h6>TAGS</h6>
+            <%= render "layouts/tags", tags: @tags %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
