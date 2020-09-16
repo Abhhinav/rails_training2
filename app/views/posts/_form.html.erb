@@ -29,6 +29,12 @@
   </div>
 
   <div class="field">
+    <%= form.label :all_tags %>
+    <%= form.text_field :all_tags, 
+        placeholder: "Enter tags separated with comma" %>
+  </div>
+
+  <div class="field">
     <%= form.label :body %>
     <%= form.rich_text_area :body %>
   </div>
