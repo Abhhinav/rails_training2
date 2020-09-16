@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.includes(:category).order("created_at DESC")
+    @posts = Post.all.includes(:category, :tags).order("created_at DESC")
   end
 
   # GET /posts/1

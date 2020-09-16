@@ -9,7 +9,7 @@ class HomeController < ApplicationController
         #render plain: "This is an index page!"
         @categories = Category.all.includes(:posts)
         @tags = Tag.all.includes(:posts)
-        @posts = Post.includes(:tags).order_by_latest.published
+        @posts = Post.includes(:tags).order_by_latest.published.page(params[:page]).per(5)
     end
     def tag_search
         if params.has_key? (:tag)
