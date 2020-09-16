@@ -25,6 +25,11 @@ class HomeController < ApplicationController
         end
         render "home/index"
     end
+    def search
+        q = params[:q]
+        @posts = Post.where('title LIKE ?',"%#{q}%").page(params[:page]).per(5)
+        render "home/index"
+    end
     def about
 
     end
