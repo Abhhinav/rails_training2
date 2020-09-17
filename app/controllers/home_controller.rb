@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+    before_action :authenticate_user!, only: [:comments]
+
     def ok
 
         render plain: "OK"
@@ -42,11 +44,27 @@ class HomeController < ApplicationController
     def about
 
     end
+    
     def read
         @post = Post.includes(:comments, :user).find(params[:id])
     end
+
+    def comments
+    @post = Post.find(params[:post_id])
+    @comment = Comment.new(comment_params)
+    @comment.post = @post
+    @comment.user = current_user
+    @comment.save
+
+    redirect_to post_read_path(@post)
+    end
+
     def contact
 
     end
 
+    private
+    def comment_params
+        params.require(:comment).permit(:title, :content)
+    end
 end
