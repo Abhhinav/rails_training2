@@ -8,5 +8,29 @@
     <div>
         <%= @post.body %>
     </div>
+
+    <hr/>
+  <div class="row mt-3">
+    <div class="col-md-12">
+        <h4>Conversations</h4>
+    </div>
+  </div>
+
+  <% @post.comments.order("created_at desc").each do |comment| %>
+    <div class="container">
+      <div class="row card mb-3 p-2">
+        <div class="col-md-12">
+          <header style="background-color: #ddd;padding:4px"><%= comment.title %></header>
+          <div>
+            <%= comment.content %>
+          </div>
+          <footer class="text-muted mt-2">
+            commented by <%= comment.user.email %> about <%= time_ago_in_words(comment.created_at) %> ago.
+          </footer>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
     <%= link_to "back", root_url %>
 </div>

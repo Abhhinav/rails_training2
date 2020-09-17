@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_16_041543) do
+ActiveRecord::Schema.define(version: 2020_09_17_070011) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(version: 2020_09_16_041543) do
     t.string "slug"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "user_id", null: false
+    t.integer "post_id"
+    t.integer "replyto_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -91,6 +102,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_041543) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "taggings", "posts"
   add_foreign_key "taggings", "tags"

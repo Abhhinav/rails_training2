@@ -3,6 +3,7 @@ class Post < ApplicationRecord
     belongs_to :user
     has_many :taggings, dependent: :destroy
     has_many :tags, through: :taggings
+    has_many :comments
     has_rich_text :body
     #default_scope
     default_scope {order :created_at}

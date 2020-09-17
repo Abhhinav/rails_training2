@@ -43,7 +43,7 @@ class HomeController < ApplicationController
 
     end
     def read
-        @post = Post.find(params[:id])
+        @post = Post.includes(:comments, :user).find(params[:id])
     end
     def contact
 
