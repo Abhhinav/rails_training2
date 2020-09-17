@@ -46,12 +46,14 @@ cat_js = Category.create(
 
 abhinav = User.create(
   email: "abhinav@gmail.com",
+  username: "Abhinav",
   password: "123456",
   password_confirmation: "123456"
 )
 
 admin = User.create(
   email: "admin@gmail.com",
+  username: "Admin",
   password: "123456",
   password_confirmation: "123456"
 )

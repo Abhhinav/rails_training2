@@ -24,7 +24,7 @@
         </div> 
         <div class = "card-footer">
         <span>Published <%= time_ago_in_words(post.created_at) %> ago</span>
-        <span> by <%= post.user.email %></span>
+        <span> by <%= post.user.username %></span>
             <%= link_to 'Read more...', post_read_path(post)%>
             <div class="d-flex justify-content-start">
                 <% post.tags.each do |tag| %>
