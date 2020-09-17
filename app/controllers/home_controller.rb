@@ -25,11 +25,20 @@ class HomeController < ApplicationController
         end
         render "home/index"
     end
+
     def search
         q = params[:q]
-        @posts = Post.where('title LIKE ?',"%#{q}%").page(params[:page]).per(5)
+        @posts = Post.includes(:tags)
+        .where('title LIKE ? OR tags.name LIKE?',"%#{q}%","%#{q}%")
+        .references(:tags).page(params[:page]).per(5)
+
+        # if params.has_key?(:q)
+            # tag_name = Tag.where(name: params[:q])
+            # @posts = tag_name.blank? ? [] : tag_name.first.posts.page(params[:page]).per(5)
+        # end
         render "home/index"
     end
+
     def about
 
     end
